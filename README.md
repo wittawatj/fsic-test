@@ -1,6 +1,7 @@
 # The Finite Set Independence Criterion (FSIC)
 
 [![Build Status](https://travis-ci.org/wittawatj/fsic-test.svg?branch=master)](https://travis-ci.org/wittawatj/fsic-test)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/wittawatj/fsic-test/blob/master/LICENSE)
 
 This repository contains a Python 2.7 implementation of the normalized FSIC (NFSIC)
 test as described in [our paper](https://arxiv.org/abs/1610.04782)
