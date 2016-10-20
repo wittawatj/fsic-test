@@ -1,0 +1,20 @@
+language: python
+python:
+    - 2.7
+
+#virtualenv:
+#    system_site_packages: true
+
+before_install:
+    #- sudo apt-get update
+    - sudo apt-get install  python-numpy python-scipy python-matplotlib
+
+# command to install dependencies
+install:
+    - pip install setuptools
+    - pip install -r requirements.txt
+
+# command to run tests
+script:
+    - if [[ $TRAVIS_PYTHON_VERSION == '2.7' ]]; then python -m unittest discover; fi
+

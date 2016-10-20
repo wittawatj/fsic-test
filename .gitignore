@@ -1,0 +1,14 @@
+fsic/result/*
+*.pyc
+*#
+*~
+*.bak
+.ipynb_checkpoints/
+.idea/
+*.pkl
+*.swp
+*.swo
+*.log
+*.aux
+.dropbox.attr
+ref/
