@@ -353,7 +353,7 @@ class GaussNFSIC(NFSIC):
         logging.info('After grid search, gwidthy0=%.3g'%gwidthy0)
 
         # set the width bounds
-        fac_min = 1e-3
+        fac_min = 5e-2
         fac_max = 5e3
         gwidthx_lb = gwidthx_lb if gwidthx_lb is not None else fac_min*medx2
         gwidthx_ub = gwidthx_ub if gwidthx_ub is not None else fac_max*medx2
