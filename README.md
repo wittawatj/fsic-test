@@ -8,24 +8,28 @@ test as described in [our paper](https://arxiv.org/abs/1610.04782)
 
     An Adaptive Test of Independence with Analytic Kernel Embeddings
     Wittawat Jitkrittum, Zoltán Szabó, Arthur Gretton
-    arXiv, 2016. 
+    ICML 2017
+
 
 ## How to install?
-1. Make sure that you have a complete [Scipy
-   stack](https://www.scipy.org/stackspec.html) installed. One way to guarantee
-this is to install it using [Anaconda with Python
-2.7](https://www.continuum.io/downloads), which is also the environment we used
-to develop this package. Make sure to use Python 2.7.
-2. Clone or download this repository. You will get a folder with name `fsic-test`.
-3. Add the path to the folder to Python's search path i.e., to `PYTHONPATH`
-   global variable. See, for instance, [this page on
-stackoverflow](http://stackoverflow.com/questions/11960602/how-to-add-something-to-pythonpath)
-on how to do this in Linux. See
-[here](http://stackoverflow.com/questions/3701646/how-to-add-to-the-pythonpath-in-windows-7)
-for Windows. 
-4. Check that indeed the package is in the search path by openning a new Python
-   shell, and issuing `import fsic` (`fsic` is the name of our
-Python package). If there is no import error, the installation is completed.  
+
+If you plan to reproduce experimental results, you will probably want to modify
+our code. It is best to install by:
+
+1. Clone the repository by `git clone https://github.com/wittawatj/fsic-test`.
+2. `cd` to the folder that you get, and install our package by
+
+
+    pip install -e .
+
+Alternatively, if you only want to use the developed package, you can do the
+following without cloning the repository. 
+
+    pip install git+https://github.com/wittawatj/fsic-test.git
+
+Either way, once installed, you should be able to do `import fsic` without any error.
+
+
 
 ### Dependency
 We rely on the following Python packages during development. 
