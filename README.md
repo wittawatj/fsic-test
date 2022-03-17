@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/wittawatj/fsic-test.svg?branch=master)](https://travis-ci.org/wittawatj/fsic-test)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/wittawatj/fsic-test/blob/master/LICENSE)
 
-This repository contains a Python 2.7 implementation of the normalized FSIC (NFSIC)
+This repository contains a Python 3 implementation of the normalized FSIC (NFSIC)
 test as described in [our paper](https://arxiv.org/abs/1610.04782)
 
     An Adaptive Test of Independence with Analytic Kernel Embeddings
@@ -22,7 +22,7 @@ our code. It is best to install by:
     pip install -e .
 
 Alternatively, if you only want to use the developed package, you can do the
-following without cloning the repository. 
+following without cloning the repository.
 
     pip install git+https://github.com/wittawatj/fsic-test.git
 
@@ -31,14 +31,14 @@ Either way, once installed, you should be able to do `import fsic` without any e
 
 
 ### Dependency
-We rely on the following Python packages during development. 
+We rely on the following Python packages during development.
 Please make sure that you use the packages with the specified version numbers
 or newer.
 
-    numpy==1.11.0
-    matplotlib==1.5.1
-    scipy==0.18.0
-    theano==0.8.
+    numpy
+    matplotlib
+    scipy
+    theano
 
 Note that `theano` is not enabled in Anaconda by default. See [this
 page](http://deeplearning.net/software/theano/install.html#basic-user-install-instructions)
@@ -70,15 +70,15 @@ We used [independent-jobs](https://github.com/wittawatj/independent-jobs)
 package to parallelize our experiments over a
 [Slurm](http://slurm.schedmd.com/) cluster (the package is not needed if you
 just need to use our developed tests). For example, for
-`ex1_vary_n.py`, a job is created for each combination of 
+`ex1_vary_n.py`, a job is created for each combination of
 
     (dataset, test algorithm, n, trial)
 
-If you do not use Slurm, you can change the line 
+If you do not use Slurm, you can change the line
 
     engine = SlurmComputationEngine(batch_parameters)
 
-to 
+to
 
     engine = SerialComputationEngine()
 
@@ -87,7 +87,7 @@ single machine (will take a lot of time). Other computation engines that you
 use might be supported. Running simulation will
 create a lot of result files (one for each tuple above) saved as Pickle. Also, the `independent-jobs`
 package requires a scratch folder to save temporary files for communication
-among computing nodes. 
+among computing nodes.
 Path to the folder containing the saved results (after running the experiments) is `fsic/result`.
 Real data should be placed in `fsic/data`.
 
