@@ -10,7 +10,7 @@ import fsic.indtest as it
 import fsic.glo as glo
 import fsic.util as util 
 import fsic.kernel as kernel 
-import exglobal as exglo
+from . import exglobal as exglo
 
 # need independent_jobs package 
 # https://github.com/karlnapf/independent-jobs
@@ -413,7 +413,7 @@ def main():
     logging.getLogger().setLevel(logging.DEBUG)
 
     if len(sys.argv) != 3:
-        print('Usage: %s folder_path problem_label'%sys.argv[0])
+        print(('Usage: %s folder_path problem_label'%sys.argv[0]))
         print(' - folder_path: full path of the folder relative to fsic/data/ folder.')
         sys.exit(1)
 

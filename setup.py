@@ -69,7 +69,7 @@ setup(
     packages=find_packages(exclude=['data', '*.ex']),
     
     # See https://www.python.org/dev/peps/pep-0440/#version-specifiers
-    python_requires='~= 2.7',
+    python_requires='>= 3.5.0',
 
     # Alternatively, if you want to distribute just a my_module.py, uncomment
     # this:

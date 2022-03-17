@@ -32,13 +32,13 @@ class PairedData(object):
             raise ValueError('Data size of the paired sample must be the same.')
 
         if not np.all(np.isfinite(X)):
-            print 'X:'
-            print util.fullprint(X)
+            print('X:')
+            print(util.fullprint(X))
             raise ValueError('Not all elements in X are finite.')
 
         if not np.all(np.isfinite(Y)):
-            print 'Y:'
-            print util.fullprint(Y)
+            print('Y:')
+            print(util.fullprint(Y))
             raise ValueError('Not all elements in Y are finite.')
 
     def __str__(self):
@@ -122,7 +122,7 @@ class PairedData(object):
 
 ### end PairedData class        
 
-class PairedSource(object):
+class PairedSource(object, metaclass=ABCMeta):
     """A data source where it is possible to resample. Subclasses may prefix 
     class names with PS. 
 
@@ -131,8 +131,6 @@ class PairedSource(object):
     - Prefix with PSDep otherwise.
     - Use PS if the PairedSource can be either one depending on the provided 
     paramters."""
-
-    __metaclass__ = ABCMeta
 
     @abstractmethod
     def sample(self, n, seed):
@@ -253,7 +251,7 @@ class PSNullShuffle(PairedSource):
         else:
             pdata = self.ps.sample(n, seed=seed+27)
             nX, Y = pdata.xy()
-            ind_shift1 = np.roll(range(n), 1)
+            ind_shift1 = np.roll(list(range(n)), 1)
             nY = Y[ind_shift1, :]
 
         new_label = 'null_shuffle'
@@ -639,7 +637,7 @@ class PSIndUnif(PairedSource):
         yub: a numpy array of upper bounds of y
         """
         convertif = lambda a: np.array(a) if isinstance(a, list) else a 
-        xlb, xub, ylb, yub = map(convertif, [xlb, xub, ylb, yub])
+        xlb, xub, ylb, yub = list(map(convertif, [xlb, xub, ylb, yub]))
         if xlb.shape[0] != xub.shape[0]:
             raise ValueError('lower and upper bounds of X must be of the same length.')
 

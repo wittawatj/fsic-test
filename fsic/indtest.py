@@ -23,9 +23,8 @@ import theano.tensor as tensor
 import theano.tensor.nlinalg as nlinalg
 import theano.tensor.slinalg as slinalg
 
-class IndTest(object):
+class IndTest(object, metaclass=ABCMeta):
     """Abstract class for an independence test for paired sample."""
-    __metaclass__ = ABCMeta
 
     def __init__(self, alpha):
         """
@@ -139,9 +138,9 @@ class NFSIC(IndTest):
         l = self.l
         s, _, _ = nfsic(X, Y, k, l, V, W, reg=self.reg)
         if not np.isfinite(s):
-            print 'k: %s'%str(k)
-            print ('l: %s'%str(l))
-            print ('reg: %s'%str(self.reg))
+            print('k: %s'%str(k))
+            print(('l: %s'%str(l)))
+            print(('reg: %s'%str(self.reg)))
             print ('V: ')
             print (V)
             print ('W: ')
@@ -750,13 +749,13 @@ def nfsic_grid_search_kernel(pdata, V, W, list_kernelx, list_kernely):
     n_cand_x = len(list_kernelx)
     n_cand_y = len(list_kernely)
     lambs = np.zeros((n_cand_x, n_cand_y))
-    for i in xrange(n_cand_x):
+    for i in range(n_cand_x):
         k = list_kernelx[i]
         K = k.eval(X, V) # n x J
         mean_k = np.mean(K, 0)
         Kt = K - mean_k
 
-        for j in xrange(n_cand_y):
+        for j in range(n_cand_y):
             l = list_kernely[j]
             L = l.eval(Y, W) # n x J
             try:
@@ -780,7 +779,7 @@ def nfsic_grid_search_kernel(pdata, V, W, list_kernelx, list_kernely):
                 #Tracer()()
                 if np.iscomplex(lamb):
                     # complex value can happen if the covariance is ill-conditioned?
-                    print('Lambda is complex. Truncate the imag part. lamb: %s'%(str(lamb)))
+                    print(('Lambda is complex. Truncate the imag part. lamb: %s'%(str(lamb))))
                     lamb = np.real(lamb)
 
                 lambs[i, j] = lamb

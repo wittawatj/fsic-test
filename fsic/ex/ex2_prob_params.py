@@ -9,7 +9,7 @@ import fsic.indtest as it
 import fsic.glo as glo
 import fsic.util as util 
 import fsic.kernel as kernel 
-import exglobal
+from . import exglobal
 
 # need independent_jobs package 
 # https://github.com/karlnapf/independent-jobs
@@ -544,16 +544,16 @@ def get_paired_source_list(prob_label):
     """
     # map: prob_label -> [paired_source]
     degrees = [float(deg) for deg in range(0, 10+1, 2)]
-    noise_dims = range(0, 8, 2 )
-    sg_dims = range(10, 100, 20)
+    noise_dims = list(range(0, 8, 2))
+    sg_dims = list(range(10, 100, 20))
     # Medium-sized Gaussian problem 
-    msg_dims = range(50, 250+1, 50)
+    msg_dims = list(range(50, 250+1, 50))
     # Big Gaussian problem
-    bsg_dims = range(100, 400+1, 100)
-    sin_freqs = range(1, 6+1)
-    multi_sin_d = range(1, 4+1, 1)
-    pwsign_d = range(10, 50+1, 10)
-    gauss_sign_d = range(1, 6+1, 1)
+    bsg_dims = list(range(100, 400+1, 100))
+    sin_freqs = list(range(1, 6+1))
+    multi_sin_d = list(range(1, 4+1, 1))
+    pwsign_d = list(range(10, 50+1, 10))
+    gauss_sign_d = list(range(1, 6+1, 1))
     prob2ps = { 
             'u2drot': (degrees, 
                 [data.PS2DUnifRotate(2.0*np.pi*deg/360, xlb=-1,
@@ -584,7 +584,7 @@ def get_paired_source_list(prob_label):
                 [data.PSGaussSign(dx=d) for d in gauss_sign_d]),
             }
     if prob_label not in prob2ps:
-        raise ValueError('Unknown problem label. Need to be one of %s'%str(prob2ps.keys()) )
+        raise ValueError('Unknown problem label. Need to be one of %s'%str(list(prob2ps.keys())) )
     return prob2ps[prob_label]
 
 
@@ -675,7 +675,7 @@ def run_problem(prob_label):
 
 def main():
     if len(sys.argv) != 2:
-        print('Usage: %s problem_label'%sys.argv[0])
+        print(('Usage: %s problem_label'%sys.argv[0]))
         sys.exit(1)
     prob_label = sys.argv[1]
 

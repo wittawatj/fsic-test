@@ -6,9 +6,8 @@ from abc import ABCMeta, abstractmethod
 import numpy as np
 import scipy.signal as sig
 
-class Kernel(object):
+class Kernel(object, metaclass=ABCMeta):
     """Abstract class for kernels"""
-    __metaclass__ = ABCMeta
 
     @abstractmethod
     def eval(self, X1, X2):

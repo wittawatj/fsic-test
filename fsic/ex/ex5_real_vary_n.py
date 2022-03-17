@@ -10,7 +10,7 @@ import fsic.indtest as it
 import fsic.glo as glo
 import fsic.util as util 
 import fsic.kernel as kernel 
-import exglobal as exglo
+from . import exglobal as exglo
 
 # need independent_jobs package 
 # https://github.com/karlnapf/independent-jobs
@@ -370,7 +370,7 @@ def dataname2ns(data_name):
             'higgs_no_deriv': very_low_ns,
             }
     if data_name not in data2ns:
-        raise ValueError('Unknown data name: %s. Need to be one of %s'%(data_name, str(data2ns.keys()) ))
+        raise ValueError('Unknown data name: %s. Need to be one of %s'%(data_name, str(list(data2ns.keys())) ))
     return data2ns[data_name]
 
 
@@ -467,7 +467,7 @@ def main():
     logging.getLogger().setLevel(logging.DEBUG)
 
     if len(sys.argv) != 3:
-        print('Usage: %s folder_path problem_label'%sys.argv[0])
+        print(('Usage: %s folder_path problem_label'%sys.argv[0]))
         print(' - folder_path: full path of the folder relative to fsic/data/ folder.')
         sys.exit(1)
 

@@ -8,7 +8,7 @@ import fsic.indtest as it
 import fsic.glo as glo
 import fsic.util as util 
 import fsic.kernel as kernel 
-import exglobal
+from . import exglobal
 
 # need independent_jobs package 
 # https://github.com/karlnapf/independent-jobs
@@ -360,10 +360,10 @@ def get_paired_source(prob_label):
     sg_d1000_n = exp_n
     sg_d250_n = exp_n
     sg_d500_n = exp_n
-    sin_w3_n = range(1000, 4000+1, 1000)
+    sin_w3_n = list(range(1000, 4000+1, 1000))
     sin_w4_n = exp_n
     sin_w5_n = exp_n
-    gsign_d3_n = range(1000, 4000+1, 1000)
+    gsign_d3_n = list(range(1000, 4000+1, 1000))
     gsign_d4_n = exp_n
     gsign_d5_n = exp_n
     prob2ps = { 
@@ -379,7 +379,7 @@ def get_paired_source(prob_label):
             'gsign_d5': (gsign_d5_n, data.PSGaussSign(dx=5) ),
             }
     if prob_label not in prob2ps:
-        raise ValueError('Unknown problem label. Need to be one of %s'%str(prob2ps.keys()) )
+        raise ValueError('Unknown problem label. Need to be one of %s'%str(list(prob2ps.keys())) )
     return prob2ps[prob_label]
 
 
@@ -469,7 +469,7 @@ def run_problem(prob_label):
 
 def main():
     if len(sys.argv) != 2:
-        print('Usage: %s problem_label'%sys.argv[0])
+        print(('Usage: %s problem_label'%sys.argv[0]))
         sys.exit(1)
     prob_label = sys.argv[1]
 

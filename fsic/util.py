@@ -29,7 +29,7 @@ class ContextTimer(object):
         self.end = time.time()
         self.secs = self.end - self.start 
         if self.verbose:
-            print 'elapsed time: %f ms' % (self.secs*1000)
+            print('elapsed time: %f ms' % (self.secs*1000))
 
 # end class ContextTimer
 
